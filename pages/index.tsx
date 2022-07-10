@@ -12,7 +12,7 @@ const Home: NextPage = () => {
 
       <main>
         <h1>
-          It's GO TIME!
+          It&apos;s GO TIME!
         </h1>
       </main>
 

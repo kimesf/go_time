@@ -1,14 +1,13 @@
+import { useTimer } from '../utils/hooks/use_timer'
 import Clock from './clock'
-import useTimer from '../utils/hooks/use_timer'
 
 export default function Timer({ seconds }: { seconds: number }) {
-  const [state, { play, pause, reset }] = useTimer(seconds)
-  const { currentSeconds } = state
+  const { time, play, pause, reset } = useTimer(seconds)
 
   return (
     <>
       <div>
-        <Clock totalSeconds={currentSeconds} />
+        <Clock time={time} />
         <button onClick={play}>Play</button>
         <button onClick={pause}>Pause</button>
         <button onClick={reset}>Reset</button>
@@ -16,4 +15,3 @@ export default function Timer({ seconds }: { seconds: number }) {
     </>
   )
 }
-

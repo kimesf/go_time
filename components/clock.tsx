@@ -1,6 +1,6 @@
-export default function Clock({ totalSeconds }: { totalSeconds: number }) {
-  const minutes = Math.floor(totalSeconds / 60)
-  const seconds = totalSeconds % 60
+export default function Clock({ time }: { time: number }) {
+  const minutes = Math.floor(time / 60)
+  const seconds = time % 60
 
   function format(number: number): string {
     return String(number).padStart(2, '0')

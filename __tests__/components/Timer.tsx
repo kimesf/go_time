@@ -1,12 +1,12 @@
 import '@testing-library/jest-dom'
 import { render, screen, fireEvent } from '@testing-library/react'
-import Timer from '../../components/timer'
+import Timer from '../../components/Timer'
 
 // TODO: is this a good practice?
 // TODO: what other way could I have mocked this to spy on it?
 import * as hooks from '../../utils/hooks/use_timer'
-import Clock from '../../components/clock'
-jest.mock('../../components/clock', jest.fn)
+import Clock from '../../components/Clock'
+jest.mock('../../components/Clock', jest.fn)
 
 
 describe('Given a Timer', () => {

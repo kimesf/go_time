@@ -1,7 +1,7 @@
 
 import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Clock from '../../components/clock'
+import Clock from '../../components/Clock'
 
 describe('Given a Clock', () => {
   it('Should format seconds to mm:ss', () => {

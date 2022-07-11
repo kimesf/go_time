@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
-import Timer from '../components/timer'
+import Timer from '../components/Timer'
 
 const Home: NextPage = () => {
   return (

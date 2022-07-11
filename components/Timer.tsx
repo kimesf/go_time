@@ -1,5 +1,5 @@
 import { useTimer } from '../utils/hooks/use_timer'
-import Clock from './clock'
+import Clock from './Clock'
 
 const Timer = ({ seconds }: { seconds: number }) => {
   const { time, play, pause, reset } = useTimer(seconds)

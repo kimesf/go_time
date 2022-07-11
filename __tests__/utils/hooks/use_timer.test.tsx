@@ -30,6 +30,16 @@ describe('Given useTimer', () => {
     })
   })
 
+  describe('When timer is already zero', () => {
+    it('Should not be able to play', () => {
+      const { result } = renderHook(() => useTimer(0))
+
+      fire(result.current.play)
+      fastForward(100)
+
+      expect(result.current.time).toEqual(0)
+    })
+  })
 
   describe('When play is called', () => {
     it('Should start timer ticking', () => {

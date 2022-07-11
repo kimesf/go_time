@@ -70,15 +70,10 @@ const useTimer = (seconds: number): UseTimer => {
   const [state, dispatch] = useReducer(reducer, initialState(seconds))
   const { currentSeconds, isRunning } = state
 
-  const play = () => {
-    if (currentSeconds == 0) return
-
-    dispatch({ type: ActionTypes.PLAY })
-  }
-
+  const tick = () => { dispatch({ type: ActionTypes.TICK }) }
+  const play = () => { dispatch({ type: ActionTypes.PLAY }) }
   const pause = () => { dispatch({ type: ActionTypes.PAUSE }) }
   const reset = () => { dispatch({ type: ActionTypes.RESET }) }
-  const tick = () => { dispatch({ type: ActionTypes.TICK }) }
 
   useEffect(() => {
     if (!isRunning) return

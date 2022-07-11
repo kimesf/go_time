@@ -67,7 +67,7 @@ describe('Given a Timer', () => {
 })
 
 // where do I put this?
-function clickButton(name: string): void {
+const clickButton = (name: string): void => {
   const button = screen.getByRole('button', { name: name })
 
   fireEvent.click(button)

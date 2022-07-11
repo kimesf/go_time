@@ -1,7 +1,7 @@
 import { useTimer } from '../utils/hooks/use_timer'
 import Clock from './clock'
 
-export default function Timer({ seconds }: { seconds: number }) {
+const Timer = ({ seconds }: { seconds: number }) => {
   const { time, play, pause, reset } = useTimer(seconds)
 
   return (
@@ -15,3 +15,5 @@ export default function Timer({ seconds }: { seconds: number }) {
     </>
   )
 }
+
+export default Timer

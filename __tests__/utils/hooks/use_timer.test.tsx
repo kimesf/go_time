@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom'
-import { renderHook, act } from '@testing-library/react'
+import { act, renderHook } from '@testing-library/react'
 import { useTimer, UseTimer, ONE_SECOND_IN_MS } from '../../../utils/hooks/use_timer'
 
 let result: { current: UseTimer }
@@ -19,8 +19,12 @@ describe('Given useTimer', () => {
 
   describe('When timer hits zero', () => {
     it('Should stop at zero', () => {
+      const { result } = renderHook(() => useTimer(1))
+
       fire(result.current.play)
-      fastForward(60)
+      // have to invoke it twice of useEffect changes are not caught
+      fastForward(1)
+      fastForward(1)
 
       expect(result.current.time).toEqual(0)
     })
@@ -73,11 +77,10 @@ describe('Given useTimer', () => {
   })
 })
 
-// TODO: where to put this? __test__/helpers ?
-function fastForward(seconds: number): void {
+const fastForward = (seconds: number): void => {
   act(() => { jest.advanceTimersByTime(seconds * ONE_SECOND_IN_MS) })
 }
 
-function fire(fn: () => void): void {
+const fire = (fn: () => void): void => {
   act(() => fn())
 }

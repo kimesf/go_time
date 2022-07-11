@@ -26,7 +26,7 @@ interface UseTimer {
   reset: () => void
 }
 
-function initialState(seconds: number): Timer {
+const initialState = (seconds: number): Timer => {
   return {
     seconds,
     currentSeconds: seconds,
@@ -34,40 +34,62 @@ function initialState(seconds: number): Timer {
   }
 }
 
-// TODO: is there a better way to organize this code?
-function reducer(state: Timer, action: Action): Timer {
+const reducer = (state: Timer, action: Action): Timer => {
   switch (action.type) {
     case ActionTypes.PLAY:
-      if (state.currentSeconds == 0) return state
-      return { ...state, isRunning: true }
+      return {
+        ...state,
+        isRunning: true
+      }
+
     case ActionTypes.PAUSE:
-      return { ...state, isRunning: false }
+      return {
+        ...state,
+        isRunning: false
+      }
+
     case ActionTypes.TICK:
-      const current = state.currentSeconds
-      if (current <= 0) return { ...state, isRunning: false }
-      return { ...state, currentSeconds: current - 1 }
+      return {
+        ...state,
+        currentSeconds: state.currentSeconds - 1
+      }
+
     case ActionTypes.RESET:
-      return { ...state, currentSeconds: state.seconds, isRunning: false }
+      return {
+        ...state,
+        currentSeconds: state.seconds,
+        isRunning: false
+      }
+
     default:
       return state
   }
 }
 
-function useTimer(seconds: number): UseTimer {
+const useTimer = (seconds: number): UseTimer => {
   const [state, dispatch] = useReducer(reducer, initialState(seconds))
-  const { isRunning } = state
+  const { currentSeconds, isRunning } = state
 
-  const tick = () => { dispatch({ type: ActionTypes.TICK }) }
-  const play = () => { dispatch({ type: ActionTypes.PLAY }) }
+  const play = () => {
+    if (currentSeconds == 0) return
+
+    dispatch({ type: ActionTypes.PLAY })
+  }
+
   const pause = () => { dispatch({ type: ActionTypes.PAUSE }) }
   const reset = () => { dispatch({ type: ActionTypes.RESET }) }
+  const tick = () => { dispatch({ type: ActionTypes.TICK }) }
 
   useEffect(() => {
-    if (isRunning) {
-      const id = setInterval(tick, ONE_SECOND_IN_MS)
-      return () => clearInterval(id)
+    if (!isRunning) return
+    if (currentSeconds == 0) {
+      pause()
+      return
     }
-  }, [isRunning])
+
+    const id = setInterval(tick, ONE_SECOND_IN_MS)
+    return () => clearInterval(id)
+  }, [isRunning, currentSeconds])
 
   return { time: state.currentSeconds, play, pause, reset } as const
 }

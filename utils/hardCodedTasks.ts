@@ -1,10 +1,10 @@
 export const HARD_CODED_TASKS = [
   {
-    name: "Pedido #9889",
+    name: 'Pedido #9889',
     tags: ['Custom'],
     subtasks: [
       {
-        description: "New York",
+        description: 'New York',
         steps: [
           {
             time: 3,
@@ -19,10 +19,10 @@ export const HARD_CODED_TASKS = [
             description: 'Descanso'
           }
         ],
-        tags: ["x2 All In"]
+        tags: ['x2 All In']
       },
       {
-        description: "Recheado",
+        description: 'Recheado',
         steps: [
           {
             time: 360,
@@ -37,16 +37,16 @@ export const HARD_CODED_TASKS = [
             description: 'Descanso'
           }
         ],
-        tags: ["1x Lemon Up", "3x Nutellas"]
+        tags: ['1x Lemon Up', '3x Nutellas']
       },
     ]
   },
   {
-    name: "Pedido #1234",
-    tags: ["One For All"],
+    name: 'Pedido #1234',
+    tags: ['One For All'],
     subtasks: [
       {
-        description: "New York",
+        description: 'New York',
         steps: [
           {
             time: 420,
@@ -61,10 +61,10 @@ export const HARD_CODED_TASKS = [
             description: 'Descanso'
           }
         ],
-        tags: ["1x All In", '1x Fragmellow'],
+        tags: ['1x All In', '1x Fragmellow'],
       },
       {
-        description: "Recheados",
+        description: 'Recheados',
         steps: [
           {
             time: 360,
@@ -82,7 +82,7 @@ export const HARD_CODED_TASKS = [
         tags: ['1x Nutella', '1x Lemon Up', '1x Choco Bomb', '1x Red Velvet', '1x Call of Churros']
       },
       {
-        description: "Tradicionais",
+        description: 'Tradicionais',
         steps: [
           {
             time: 300,

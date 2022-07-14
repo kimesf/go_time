@@ -24,7 +24,7 @@ interface Timer {
   reset: () => void
 }
 
-function initialState(seconds: number): UseTimerState {
+const initialState = (seconds: number): UseTimerState => {
   return {
     seconds,
     currentSeconds: seconds,

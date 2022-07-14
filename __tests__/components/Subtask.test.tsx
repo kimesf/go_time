@@ -8,15 +8,15 @@ describe('Given a Subtask', () => {
   jest.useFakeTimers()
 
   const subtask = {
-    description: 'description',
+    name: 'test subtask mock',
     steps: [
       {
         time: 11,
-        description: 'desc 1',
+        name: 'desc 1',
       },
       {
         time: 22,
-        description: 'desc 2',
+        name: 'desc 2',
       },
     ],
     tags: ['tag 1', 'tag 2']
@@ -32,8 +32,8 @@ describe('Given a Subtask', () => {
       expect(screen.queryByText(/22/)).not.toBeInTheDocument()
     })
 
-    it('Should render description', () => {
-      expect(screen.getByText(/description/)).toBeInTheDocument()
+    it('Should render name', () => {
+      expect(screen.getByText(/test subtask mock/)).toBeInTheDocument()
     })
 
     it('Should render tags', () => {

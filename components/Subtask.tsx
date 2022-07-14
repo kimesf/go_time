@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import styled from 'styled-components'
+import Pills from './Pills'
 import Step from './Step'
 
 interface Subtask {
-  description: string
+  name: string
   steps: Step[]
   tags: string[]
 }
@@ -11,11 +12,10 @@ interface Subtask {
 const firstStep = 0
 
 const Subtask = ({ props }: { props: Subtask }) => {
-  const { description, tags, steps } = props
+  const { name, tags, steps } = props
   const [currentStep, setCurrentStep] = useState(firstStep)
 
   const setStepDone = () => setCurrentStep(currentStep + 1)
-
   const areAllStepsDone = () => currentStep == steps.length
 
   const CurrentStep = () => {
@@ -30,18 +30,14 @@ const Subtask = ({ props }: { props: Subtask }) => {
         <CurrentStep />
         <Info>
           <Subtitle>
-            {description}
+            {name}
           </Subtitle>
-          <Pills>
-            {tags.map((tag) => {
-              return <Pill key={tag}>{tag}</Pill>
-            })}
-          </Pills>
+          <Pills props={tags} />
         </Info>
       </Header>
       <ProgressBar>
         {steps.map((step, index) => {
-          return <Partial key={index}>{step.description}</Partial>
+          return <Partial key={index}>{step.name}</Partial>
         })}
       </ProgressBar>
     </StyledSubtask>
@@ -69,20 +65,6 @@ const Info = styled.div`
 
 const Subtitle = styled.div`
   font-size: 1.2rem;
-`
-
-const Pills = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`
-
-const Pill = styled.div`
-  border: 1px solid grey;
-  margin-right: 0.5rem;
-  margin-top: 0.5rem;
-  padding: 0.25rem 0.4rem;
-  border-radius: 15px;
-  background-color: pink;
 `
 
 const ProgressBar = styled.div`

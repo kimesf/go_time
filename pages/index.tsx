@@ -2,8 +2,30 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import styled from 'styled-components'
+import ActionPanel from '../components/ActionPanel'
 import Task from '../components/Task'
 import { HARD_CODED_TASKS } from '../utils/hardCodedTasks'
+
+const tempActions = [
+  {
+    task: { name: 'Pedido #9889' },
+    subtask: {
+      name: 'New York',
+      tags: ['1x Lemon Up', '3x Nutellas'],
+    },
+    currentStep: { name: 'Forno segundo lado' },
+    nextStep: { name: 'Descanso' },
+  },
+  {
+    task: { name: 'Pedido #9889' },
+    subtask: {
+      name: 'New York',
+      tags: ['1x Lemon Up', '3x Nutellas'],
+    },
+    currentStep: { name: 'Forno segundo lado' },
+    nextStep: { name: 'Descanso' },
+  }
+]
 
 const Home: NextPage = () => {
   return (
@@ -17,7 +39,7 @@ const Home: NextPage = () => {
           It&apos;s GO TIME!
         </h1>
         <Card>
-          Actions needed
+          <ActionPanel actions={tempActions} />
         </Card>
         {HARD_CODED_TASKS.map((task) => {
           return <Card key={task.name}><Task props={task} /></Card>

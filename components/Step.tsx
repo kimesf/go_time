@@ -4,7 +4,7 @@ import Timer from './Timer'
 
 interface Step {
   time: number
-  description: string
+  name: string
 }
 
 const Step = ({ props }: { props: { step: Step, setStepDone: () => void } }) => {

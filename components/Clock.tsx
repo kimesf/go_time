@@ -1,3 +1,5 @@
+import styled from 'styled-components'
+
 const Clock = ({ time }: { time: number }) => {
   const minutes = Math.floor(time / 60)
   const seconds = time % 60
@@ -7,12 +9,15 @@ const Clock = ({ time }: { time: number }) => {
   }
 
   return (
-    <div>
+    <StyledClock>
       {format(minutes)}
       :
       {format(seconds)}
-    </ div>
+    </StyledClock>
   )
 }
+const StyledClock = styled.div`
+  font-size: 4rem;
+`
 
 export default Clock

@@ -9,12 +9,12 @@ interface Step {
 
 const Step = ({ props }: { props: { step: Step, setStepDone: () => void } }) => {
   const { step, setStepDone } = props
-  const { time: initialTime, description } = step
+  const { time: initialTime } = step
 
   return (
+    // TODO: I might not need this component...
     <StyledStep>
       <Timer props={{ initialTime: initialTime, setStepDone }} />
-      {description}
     </StyledStep>
   )
 }

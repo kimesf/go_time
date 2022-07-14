@@ -21,9 +21,5 @@ describe('Given a Step', () => {
     it('Should pass time and setStepDone to Timer', () => {
       expect(Timer).toHaveBeenCalledWith({ props: { initialTime: 5, setStepDone: mockFn } }, {})
     })
-
-    it('Should render descrition', () => {
-      expect(screen.getByText(/mock/i))
-    })
   })
 })

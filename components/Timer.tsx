@@ -17,9 +17,11 @@ const Timer = ({ props }: { props: { initialTime: number, setStepDone: () => voi
     <>
       <StyledTimer>
         <Clock time={time} />
-        <button onClick={play}>Play</button>
-        <button onClick={pause}>Pause</button>
-        <button onClick={reset}>Reset</button>
+        <div>
+          <button onClick={play}>Play</button>
+          <button onClick={pause}>Pause</button>
+          <button onClick={reset}>Reset</button>
+        </div>
       </StyledTimer>
     </>
   )
@@ -27,6 +29,7 @@ const Timer = ({ props }: { props: { initialTime: number, setStepDone: () => voi
 
 const StyledTimer = styled.div`
   display: flex;
+  flex-direction: column;
 `
 
 export default Timer

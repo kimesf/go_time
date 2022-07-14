@@ -8,7 +8,7 @@ describe('Given a Subtask', () => {
   jest.useFakeTimers()
 
   const subtask = {
-    description: "New York",
+    description: 'description',
     steps: [
       {
         time: 11,
@@ -19,7 +19,7 @@ describe('Given a Subtask', () => {
         description: 'desc 2',
       },
     ],
-    tags: ["x2 All In"]
+    tags: ['tag 1', 'tag 2']
   }
 
   beforeEach(() => {
@@ -30,6 +30,15 @@ describe('Given a Subtask', () => {
     it('Should render timer for the first given time only', () => {
       expect(screen.queryByText(/11/)).toBeInTheDocument()
       expect(screen.queryByText(/22/)).not.toBeInTheDocument()
+    })
+
+    it('Should render description', () => {
+      expect(screen.getByText(/description/)).toBeInTheDocument()
+    })
+
+    it('Should render tags', () => {
+      expect(screen.getByText(/tag 1/)).toBeInTheDocument()
+      expect(screen.getByText(/tag 2/)).toBeInTheDocument()
     })
   })
 

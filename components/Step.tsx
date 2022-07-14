@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+
 import Timer from './Timer'
 
 interface Step {
@@ -12,7 +13,7 @@ const Step = ({ props }: { props: { step: Step, setStepDone: () => void } }) => 
 
   return (
     <StyledStep>
-      <Timer props={{ initialTime, setStepDone }} />
+      <Timer props={{ initialTime: initialTime, setStepDone }} />
       {description}
     </StyledStep>
   )

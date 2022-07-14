@@ -58,9 +58,6 @@ const reducer = (state: UseTimerState, action: Action): UseTimerState => {
         currentSeconds: state.seconds,
         isRunning: false
       }
-
-    default:
-      return state
   }
 }
 

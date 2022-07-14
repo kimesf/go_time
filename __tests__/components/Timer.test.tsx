@@ -16,17 +16,21 @@ describe('Given a Timer', () => {
     })
   })
 
-  describe('When done', () => {
+  describe('When time is up', () => {
     jest.useFakeTimers()
 
-    it('Should call for setStepDone', () => {
-      const spySetStepDone = jest.fn()
+    let spySetStepDone: () => void
+
+    beforeEach(() => {
+      spySetStepDone = jest.fn()
 
       render(<Timer props={{ initialTime: 35, setStepDone: spySetStepDone }} />)
 
       clickButton('Play')
       fastForwardInSec(35)
+    })
 
+    it('Should call for setStepDone', () => {
       expect(spySetStepDone).toHaveBeenCalledTimes(1)
     })
   })

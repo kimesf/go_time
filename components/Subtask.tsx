@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import styled from 'styled-components'
-import Pills from './Pills'
+import { Card, Pills } from './shared_styles'
 import Step from './Step'
 
 interface Subtask {
@@ -26,20 +26,22 @@ const Subtask = ({ props }: { props: Subtask }) => {
 
   return (
     <StyledSubtask>
-      <Header>
-        <CurrentStep />
-        <Info>
-          <Subtitle>
-            {name}
-          </Subtitle>
-          <Pills props={tags} />
-        </Info>
-      </Header>
-      <ProgressBar>
-        {steps.map((step, index) => {
-          return <Partial key={index}>{step.name}</Partial>
-        })}
-      </ProgressBar>
+      <Card>
+        <Header>
+          <CurrentStep />
+          <Info>
+            <Subtitle>
+              {name}
+            </Subtitle>
+            <Pills props={tags} />
+          </Info>
+        </Header>
+        <ProgressBar>
+          {steps.map((step, index) => {
+            return <Partial key={index}>{step.name}</Partial>
+          })}
+        </ProgressBar>
+      </Card>
     </StyledSubtask>
   )
 }
@@ -47,9 +49,6 @@ const Subtask = ({ props }: { props: Subtask }) => {
 const StyledSubtask = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid grey;
 `
 
 const Header = styled.div`

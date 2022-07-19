@@ -1,7 +1,5 @@
 import { useEffect, useReducer } from 'react'
 
-const ONE_SECOND_IN_MS = 1000
-
 enum ActionTypes {
   PLAY = 'play',
   PAUSE = 'pause',
@@ -13,20 +11,20 @@ interface Action {
   type: ActionTypes
 }
 
-interface Timer {
+interface UseTimerState {
   seconds: number
   currentSeconds: number
   isRunning: boolean
 }
 
-interface UseTimer {
-  time: number,
+interface Timer {
+  time: number
   play: () => void
   pause: () => void
   reset: () => void
 }
 
-const initialState = (seconds: number): Timer => {
+const initialState = (seconds: number): UseTimerState => {
   return {
     seconds,
     currentSeconds: seconds,
@@ -34,7 +32,7 @@ const initialState = (seconds: number): Timer => {
   }
 }
 
-const reducer = (state: Timer, action: Action): Timer => {
+const reducer = (state: UseTimerState, action: Action): UseTimerState => {
   switch (action.type) {
     case ActionTypes.PLAY:
       return {
@@ -60,13 +58,10 @@ const reducer = (state: Timer, action: Action): Timer => {
         currentSeconds: state.seconds,
         isRunning: false
       }
-
-    default:
-      return state
   }
 }
 
-const useTimer = (seconds: number): UseTimer => {
+function useTimer(seconds: number): Timer {
   const [state, dispatch] = useReducer(reducer, initialState(seconds))
   const { currentSeconds, isRunning } = state
 
@@ -82,11 +77,11 @@ const useTimer = (seconds: number): UseTimer => {
       return
     }
 
-    const id = setInterval(tick, ONE_SECOND_IN_MS)
+    const id = setInterval(tick, 1000)
     return () => clearInterval(id)
   }, [isRunning, currentSeconds])
 
   return { time: state.currentSeconds, play, pause, reset } as const
 }
 
-export { useTimer, type UseTimer, ONE_SECOND_IN_MS }
+export { useTimer, type Timer }

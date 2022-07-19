@@ -1,8 +1,9 @@
 import '@testing-library/jest-dom'
-import { act, renderHook } from '@testing-library/react'
-import { useTimer, UseTimer, ONE_SECOND_IN_MS } from '../../../utils/hooks/use_timer'
+import { renderHook } from '@testing-library/react'
+import { useTimer, Timer } from '../../../utils/hooks/use_timer'
+import { fastForwardInSec, fire } from '../../helpers'
 
-let result: { current: UseTimer }
+let result: { current: Timer }
 
 describe('Given useTimer', () => {
   jest.useFakeTimers()
@@ -23,8 +24,8 @@ describe('Given useTimer', () => {
 
       fire(result.current.play)
       // have to invoke it twice of useEffect changes are not caught
-      fastForward(1)
-      fastForward(1)
+      fastForwardInSec(1)
+      fastForwardInSec(1)
 
       expect(result.current.time).toEqual(0)
     })
@@ -35,7 +36,7 @@ describe('Given useTimer', () => {
       const { result } = renderHook(() => useTimer(0))
 
       fire(result.current.play)
-      fastForward(100)
+      fastForwardInSec(100)
 
       expect(result.current.time).toEqual(0)
     })
@@ -44,7 +45,7 @@ describe('Given useTimer', () => {
   describe('When play is called', () => {
     it('Should start timer ticking', () => {
       fire(result.current.play)
-      fastForward(35)
+      fastForwardInSec(35)
 
       expect(result.current.time).toEqual(7)
     })
@@ -53,12 +54,12 @@ describe('Given useTimer', () => {
   describe('When pause is called', () => {
     it('Should stop timer ticking', () => {
       fire(result.current.play)
-      fastForward(32)
+      fastForwardInSec(32)
 
       expect(result.current.time).toEqual(10)
 
       fire(result.current.pause)
-      fastForward(9)
+      fastForwardInSec(9)
 
       expect(result.current.time).toEqual(10)
     })
@@ -67,7 +68,7 @@ describe('Given useTimer', () => {
   describe('When reset is called', () => {
     it('Should set time to first given argument', () => {
       fire(result.current.play)
-      fastForward(2)
+      fastForwardInSec(2)
 
       expect(result.current.time).toEqual(40)
 
@@ -78,19 +79,11 @@ describe('Given useTimer', () => {
 
     it('Should prevent timer from ticking', () => {
       fire(result.current.play)
-      fastForward(2)
+      fastForwardInSec(2)
       fire(result.current.reset)
-      fastForward(10)
+      fastForwardInSec(10)
 
       expect(result.current.time).toEqual(42)
     })
   })
 })
-
-const fastForward = (seconds: number): void => {
-  act(() => { jest.advanceTimersByTime(seconds * ONE_SECOND_IN_MS) })
-}
-
-const fire = (fn: () => void): void => {
-  act(() => fn())
-}

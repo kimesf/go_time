@@ -5,7 +5,7 @@ import Task from '../../components/Task'
 import Subtask from '../../components/Subtask'
 jest.mock('../../components/Subtask', jest.fn)
 
-describe('Given a Task', () => {
+describe('Task', () => {
   const subtask1 = {
     description: 'desc 1',
     steps: [
@@ -39,16 +39,16 @@ describe('Given a Task', () => {
       render(<Task props={task} />)
     })
 
-    it('Should pass on substasks props to their component', () => {
+    it('passes on substasks props to their component', () => {
       expect(Subtask).toHaveBeenNthCalledWith(1, { props: subtask1 }, {})
       expect(Subtask).toHaveBeenNthCalledWith(2, { props: subtask2 }, {})
     })
 
-    it('Should render name', () => {
+    it('renders name', () => {
       expect(screen.getByText(/name/i)).toBeInTheDocument()
     })
 
-    it('Should render tags', () => {
+    it('renders tags', () => {
       expect(screen.getByText(/custom/i)).toBeInTheDocument()
     })
   })

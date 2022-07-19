@@ -5,7 +5,7 @@ import { fastForwardInSec, fire } from '../../helpers'
 
 let result: { current: Timer }
 
-describe('Given useTimer', () => {
+describe('useTimer', () => {
   jest.useFakeTimers()
 
   beforeEach(() => {
@@ -13,13 +13,13 @@ describe('Given useTimer', () => {
   })
 
   describe('When initialized', () => {
-    it('Should set initial time with given argument', () => {
+    it('sets initial time with given argument', () => {
       expect(result.current.time).toEqual(42)
     })
   })
 
-  describe('When timer hits zero', () => {
-    it('Should stop at zero', () => {
+  describe('When hits zero', () => {
+    it('stops', () => {
       const { result } = renderHook(() => useTimer(1))
 
       fire(result.current.play)
@@ -31,8 +31,8 @@ describe('Given useTimer', () => {
     })
   })
 
-  describe('When timer is already zero', () => {
-    it('Should not be able to play', () => {
+  describe('When is already zero', () => {
+    it('play does nothing', () => {
       const { result } = renderHook(() => useTimer(0))
 
       fire(result.current.play)
@@ -43,7 +43,7 @@ describe('Given useTimer', () => {
   })
 
   describe('When play is called', () => {
-    it('Should start timer ticking', () => {
+    it('starts timer ticking', () => {
       fire(result.current.play)
       fastForwardInSec(35)
 
@@ -52,7 +52,7 @@ describe('Given useTimer', () => {
   })
 
   describe('When pause is called', () => {
-    it('Should stop timer ticking', () => {
+    it('stops timer ticking', () => {
       fire(result.current.play)
       fastForwardInSec(32)
 
@@ -66,7 +66,7 @@ describe('Given useTimer', () => {
   })
 
   describe('When reset is called', () => {
-    it('Should set time to first given argument', () => {
+    it('sets time to first given argument', () => {
       fire(result.current.play)
       fastForwardInSec(2)
 
@@ -77,7 +77,7 @@ describe('Given useTimer', () => {
       expect(result.current.time).toEqual(42)
     })
 
-    it('Should prevent timer from ticking', () => {
+    it('prevents timer from ticking', () => {
       fire(result.current.play)
       fastForwardInSec(2)
       fire(result.current.reset)

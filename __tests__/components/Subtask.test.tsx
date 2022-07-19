@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react'
 import Subtask from '../../components/Subtask'
 import { clickButton, fastForwardInSec } from '../helpers'
 
-describe('Given a Subtask', () => {
+describe('Subtask', () => {
   jest.useFakeTimers()
 
   const subtask = {
@@ -27,22 +27,22 @@ describe('Given a Subtask', () => {
   })
 
   describe('When initialized', () => {
-    it('Should render timer for the first given time only', () => {
+    it('render timer for the first given time only', () => {
       expect(screen.queryByText(/11/)).toBeInTheDocument()
       expect(screen.queryByText(/22/)).not.toBeInTheDocument()
     })
 
-    it('Should render description', () => {
+    it('renders description', () => {
       expect(screen.getByText(/description/)).toBeInTheDocument()
     })
 
-    it('Should render tags', () => {
+    it('renders tags', () => {
       expect(screen.getByText(/tag 1/)).toBeInTheDocument()
       expect(screen.getByText(/tag 2/)).toBeInTheDocument()
     })
   })
 
-  describe('When current step is last', () => {
+  describe('When all steps are done', () => {
     beforeEach(() => {
       clickButton('Play')
       fastForwardInSec(11)
@@ -50,7 +50,7 @@ describe('Given a Subtask', () => {
       fastForwardInSec(22)
     })
 
-    it('Should show finished message', () => {
+    it('shows done message', () => {
       expect(screen.queryByText(/DONE!/)).toBeInTheDocument()
     })
   })

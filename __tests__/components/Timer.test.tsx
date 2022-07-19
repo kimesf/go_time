@@ -7,9 +7,9 @@ import * as hooks from '../../utils/hooks/use_timer'
 import Clock from '../../components/Clock'
 jest.mock('../../components/Clock', jest.fn)
 
-describe('Given a Timer', () => {
+describe('Timer', () => {
   describe('When initialized', () => {
-    it('Should call for Clock passing seconds as time', () => {
+    it('calls for Clock passing seconds as time', () => {
       render(<Timer props={{ initialTime: 32, setStepDone: jest.fn() }} />)
 
       expect(Clock).toHaveBeenCalledWith({ time: 32 }, {})
@@ -30,7 +30,7 @@ describe('Given a Timer', () => {
       fastForwardInSec(35)
     })
 
-    it('Should call for setStepDone', () => {
+    it('calls for setStepDone', () => {
       expect(spySetStepDone).toHaveBeenCalledTimes(1)
     })
   })
@@ -54,19 +54,19 @@ describe('Given a Timer', () => {
       render(<Timer props={{ initialTime: initialTime, setStepDone: jest.fn() }} />)
     })
 
-    it('Should call useTimer.play for "Play"', () => {
+    it('calls useTimer.play for "Play"', () => {
       clickButton('Play')
 
       expect(spyPlay).toHaveBeenCalledTimes(1)
     })
 
-    it('Should call useTimer.pause for "Pause"', () => {
+    it('calls useTimer.pause for "Pause"', () => {
       clickButton('Pause')
 
       expect(spyPause).toHaveBeenCalledTimes(1)
     })
 
-    it('Should call useTimer.reset for "Reset"', () => {
+    it('calls useTimer.reset for "Reset"', () => {
       clickButton('Reset')
 
       expect(spyReset).toHaveBeenCalledTimes(1)

@@ -1,6 +1,5 @@
-import { Card, ColumnContainer, RowContainer } from './basics'
+import { Card, ColumnContainer, RowContainer, Text } from './styles'
 import Section from './Section'
-import Text from './Text'
 import Tooltip from './Tooltip'
 import Pills from './Pills'
 

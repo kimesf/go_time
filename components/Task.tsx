@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import Subtask from './Subtask'
-import { ColumnContainer, Pills, Section } from './shared_styles'
+import { ColumnContainer, Pills, Section } from './shared'
 
 interface Task {
   name: string

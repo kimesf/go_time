@@ -4,7 +4,7 @@ import Subtask from './Subtask'
 import Task from './Task'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAnglesRight } from '@fortawesome/free-solid-svg-icons'
-import { Card, ColumnContainer, Section, Text, Pills, RowContainer } from './shared_styles'
+import { Card, ColumnContainer, Section, Text, Pills, RowContainer } from './shared'
 
 interface Action {
   task: Partial<Task>

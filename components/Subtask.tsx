@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import styled from 'styled-components'
-import { Card, Pills } from './shared_styles'
+import { Card, Pills } from './shared'
 import Step from './Step'
 
 interface Subtask {

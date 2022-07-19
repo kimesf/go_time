@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import ActionPanel from '../components/ActionPanel'
 import Task from '../components/Task'
 import { HARD_CODED_TASKS } from '../utils/hardCodedTasks'
-import { Card, ColumnContainer } from '../components/shared_styles'
+import { ColumnContainer } from '../components/shared'
 
 const tempActions = [
   {

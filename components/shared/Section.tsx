@@ -1,8 +1,5 @@
 import styled from 'styled-components'
-
 import { ColumnContainer, RowContainer, Text, Tooltip } from '.'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 
 interface Props {
   title: string
@@ -18,10 +15,7 @@ const Section = ({ title, subtitle, children }: Props) => {
     <StyledSection>
       <Reference>
         <Tooltip>
-          {{
-            icon: <FontAwesomeIcon icon={faCircleInfo} />,
-            tip: children.tip,
-          }}
+          {children.tip}
         </Tooltip>
         <ColumnContainer>
           <Text size='small'>{title}</Text>

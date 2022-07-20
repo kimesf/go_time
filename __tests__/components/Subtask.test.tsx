@@ -4,6 +4,9 @@ import { render, screen } from '@testing-library/react'
 import Subtask from '../../components/Subtask'
 import { clickButton, fastForwardInSec } from '../helpers'
 
+import Pills from '../../components/shared/Pills'
+jest.mock('../../components/shared/Pills', jest.fn)
+
 describe('Subtask', () => {
   jest.useFakeTimers()
 
@@ -36,9 +39,8 @@ describe('Subtask', () => {
       expect(screen.getByText(/test subtask mock/)).toBeInTheDocument()
     })
 
-    it('renders tags', () => {
-      expect(screen.getByText(/tag 1/)).toBeInTheDocument()
-      expect(screen.getByText(/tag 2/)).toBeInTheDocument()
+    it('passes tags to Pills', () => {
+      expect(Pills).toHaveBeenCalledWith({ props: subtask.tags }, {})
     })
   })
 

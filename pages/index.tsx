@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import styled from 'styled-components'
-import ActionPanel from '../components/ActionPanel'
+import ActionsNeeded from '../components/ActionsNeeded'
 import Task from '../components/Task'
 import { HARD_CODED_TASKS } from '../utils/hardCodedTasks'
 import { ColumnContainer } from '../components/shared'
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
         <h1>
           It&apos;s GO TIME!
         </h1>
-        <ActionPanel actions={tempActions} />
+        <ActionsNeeded actions={tempActions} />
         <Tasks>
           {HARD_CODED_TASKS.map((task) => {
             return <Task props={task} key={task.name} />

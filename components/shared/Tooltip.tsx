@@ -1,20 +1,19 @@
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleInfo } from '@fortawesome/free-solid-svg-icons'
 
 interface Props {
-  children: {
-    icon: JSX.Element
-    tip: JSX.Element
-  }
+  children: JSX.Element
 }
 
 const Tooltip = ({ children }: Props) => {
   return (
     <StyledTooltip>
       <Icon>
-        {children.icon}
+        <FontAwesomeIcon icon={faCircleInfo} />
       </Icon>
       <Tip>
-        {children.tip}
+        {children}
       </Tip>
     </StyledTooltip>
   )

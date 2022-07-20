@@ -1,0 +1,21 @@
+/* https://www.materialpalette.com/colors */
+
+:root {
+  --color-red: #E15336;
+  --color-blue-light: #2962ff;
+  --color-green: #4caf50;
+  --color-green-dark: #2e7d32;
+  --color-green-darker: #1b5e20;
+  --color-amber: #ffc400;
+  --color-purple: #7b1fa2;
+  --color-grey: #757575;
+}
+
+:root {
+  --color-confirm: var(--color-green);
+  --color-confirm-dark: var(--color-green-dark);
+  --color-confirm-darker: var(--color-green-darker);
+  --color-info: var(--color-blue-light);
+  --color-alert: var(--color-amber);
+  --color-highlight: var(--color-purple);
+}

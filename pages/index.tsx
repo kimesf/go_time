@@ -2,8 +2,31 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Link from 'next/link'
 import styled from 'styled-components'
+import ActionsNeeded from '../components/ActionsNeeded'
 import Task from '../components/Task'
 import { HARD_CODED_TASKS } from '../utils/hardCodedTasks'
+import { ColumnContainer } from '../components/shared'
+
+const tempActions = [
+  {
+    task: { name: 'Pedido #9889' },
+    subtask: {
+      name: 'New York',
+      tags: ['1x Lemon Up', '3x Nutellas'],
+    },
+    currentStep: { name: 'Forno primeiro lado' },
+    nextStep: { name: 'Forno segundo lado' },
+  },
+  {
+    task: { name: 'Pedido #1234' },
+    subtask: {
+      name: 'Recheado',
+      tags: ['1x Lemon Up', '3x Nutellas'],
+    },
+    currentStep: { name: 'Forno segundo lado' },
+    nextStep: { name: 'Descanso' },
+  }
+]
 
 const Home: NextPage = () => {
   return (
@@ -16,44 +39,39 @@ const Home: NextPage = () => {
         <h1>
           It&apos;s GO TIME!
         </h1>
-        <Card>
-          Actions needed
-        </Card>
-        {HARD_CODED_TASKS.map((task) => {
-          return <Card key={task.name}><Task props={task} /></Card>
-        })}
+        <ActionsNeeded actions={tempActions} />
+        <Tasks>
+          {HARD_CODED_TASKS.map((task) => {
+            return <Task props={task} key={task.name} />
+          })}
+        </Tasks>
       </Main>
 
-      <footer>
+      <Footer>
         <Link href="https://github.com/kimesf/go_time">
           <a>Open Source at Github</a>
         </Link>
-      </footer>
+      </Footer>
     </Container>
   )
 }
 
-const Container = styled.div`
-  display: flex;
-  flex-direction: column;
+const Container = styled(ColumnContainer)`
   align-items: center;
+  gap: var(--spacing-medium);
 `
 
-const Main = styled.main`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 85ch;
+const Main = styled(Container)`
+  width: 95ch;
 `
 
-const Card = styled.section`
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1.4rem;
-  padding: 1rem 1rem;
-  width: 75ch;
-  border: 1px solid lightgrey;
-  box-shadow: -2px 2px 5px grey;
+const Tasks = styled(ColumnContainer)`
+  width: 100%;
+  gap: var(--spacing-medium);
+`
+
+const Footer = styled.footer`
+  background-color: orange; /* temp */
 `
 
 export default Home

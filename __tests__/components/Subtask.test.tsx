@@ -10,6 +10,7 @@ jest.mock('../../components/shared/Pills', jest.fn)
 describe('Subtask', () => {
   jest.useFakeTimers()
 
+  // TODO: (id: 3) move to fixtures
   const subtask = {
     name: 'test subtask mock',
     steps: [

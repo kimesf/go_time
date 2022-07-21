@@ -2,7 +2,7 @@ import { act } from 'react-dom/test-utils'
 import { screen, fireEvent } from '@testing-library/react'
 
 // this file only contains helpers
-// TODO: remove skip by configuring jest to ignore it
+// TODO: (id: 2) remove skip by configuring jest to ignore it
 // see https://stackoverflow.com/a/68523435/10331739
 test.skip('Skip helpers file', () => { })
 

@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 import Subtask from './Subtask'
 import { ColumnContainer, Pills, Section } from './shared'
+import { FakeId } from './StoreProvider'
 
 interface Task {
+  id: FakeId
   name: string
   tags: string[]
   subtasks: Subtask[]

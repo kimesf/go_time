@@ -2,34 +2,17 @@ import styled from 'styled-components'
 import ActionsNeeded from './ActionsNeeded'
 import Task from './Task'
 import { ColumnContainer } from '../components/shared'
+import { useContext } from 'react'
+import { StoreContext } from './StoreProvider'
 
-const tempActions = [
-  {
-    task: { name: 'Pedido #9889' },
-    subtask: {
-      name: 'New York',
-      tags: ['1x Lemon Up', '3x Nutellas'],
-    },
-    currentStep: { name: 'Forno primeiro lado' },
-    nextStep: { name: 'Forno segundo lado' },
-  },
-  {
-    task: { name: 'Pedido #1234' },
-    subtask: {
-      name: 'Recheado',
-      tags: ['1x Lemon Up', '3x Nutellas'],
-    },
-    currentStep: { name: 'Forno segundo lado' },
-    nextStep: { name: 'Descanso' },
-  }
-]
+const Tasks = () => {
+  const { tasks, actionsNeeded } = useContext(StoreContext)
 
-const Tasks = ({ tasks }: { tasks: Task[] }) => {
   return (
     <StyledTasks>
-      <ActionsNeeded actions={tempActions} />
+      <ActionsNeeded actions={actionsNeeded} />
       {tasks.map((task) => {
-        return <Task props={task} key={task.name} />
+        return <Task key={task.id.toString()} props={task} />
       })}
     </StyledTasks>
   )

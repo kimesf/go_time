@@ -5,10 +5,12 @@ test.skip('Skip fixtures file', () => { })
 
 export const TASKS_MOCK = [
   {
+    id: 'fakeuuid1',
     name: 'Task 1',
     tags: ['Task 1 tag 1', 'Task 1 tag 2'],
     subtasks: [
       {
+        id: 'fakeuuid1-1',
         name: 'Tag 1 subtask 1',
         steps: [
           {
@@ -27,6 +29,7 @@ export const TASKS_MOCK = [
         tags: ['Task 1 subtask 1 tag 1', 'Task 1 subtask 1 tag 2']
       },
       {
+        id: 'fakeuuid1-2',
         name: 'Task 1 subtask 2',
         steps: [
           {
@@ -47,10 +50,12 @@ export const TASKS_MOCK = [
     ]
   },
   {
+    id: 'fakeuuid2',
     name: 'Task 2',
     tags: ['Task 2 tag 1', 'Task 2 tag 2', 'Task 2 tag 3'],
     subtasks: [
       {
+        id: 'fakeuuid2-1',
         name: 'Task 2 subtask 1',
         steps: [
           {
@@ -69,6 +74,7 @@ export const TASKS_MOCK = [
         tags: ['Task 2 subtask 1 tag 1', 'Task 2 subtask 1 tag 2'],
       },
       {
+        id: 'fakeuuid2-2',
         name: 'Task 2 subtask 2',
         steps: [
           {
@@ -87,6 +93,7 @@ export const TASKS_MOCK = [
         tags: ['Task 2 subtask 2 tag 1', 'Task 2 subtask 2 tag 2', 'Task 3 subtask 2 tag 3', 'Task 2 subtask 2 tag 4', 'Task 3 subtask 2 tag 5'],
       },
       {
+        id: 'fakeuuid2-3',
         name: 'Task 2 subtask 3',
         steps: [
           {

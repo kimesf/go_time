@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 import { Card, Text, RowContainer } from './shared'
-
-
 import Step from './Step'
 import Subtask from './Subtask'
 import Task from './Task'

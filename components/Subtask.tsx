@@ -2,8 +2,10 @@ import { useState } from 'react'
 import styled from 'styled-components'
 import { Card, Pills } from './shared'
 import Step from './Step'
+import { FakeId } from './StoreProvider'
 
 interface Subtask {
+  id: FakeId
   name: string
   steps: Step[]
   tags: string[]
